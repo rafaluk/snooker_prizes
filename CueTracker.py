@@ -140,17 +140,19 @@ class CueTracker:
             results_dict = self.combine_results(pages, 3, 9)
         elif self._category == Category.MONEY:
             results_dict = self.combine_results(pages, 30000, 5)
+        elif self._category == Category.TITLES:
+            results_dict = self.combine_results(pages, 1, 5)
 
         return results_dict
 
     def combine_results(self, pages, threshold, value_cell):
         """Merges results from pages from different seasons."""
-        results_dict = {}
+        combined_dict = {}
         for page in pages:
             tr_tags = list(page.find_all('tr'))
             tournaments = self.extract_data(tr_tags, threshold, value_cell)
-            results_dict = self.merge_dicts(results_dict, tournaments)
-        return results_dict
+            combined_dict = self.merge_dicts(combined_dict, tournaments)
+        return combined_dict
 
 
 class Category(Enum):
