@@ -78,18 +78,36 @@ import pandas as pd
 
 seasons = ['2016-2017']
 
-# get data for Money Prizes
+# fetch data for Money Prizes
 cueTrackerMoney = CueTracker(Category.MONEY)
 cueTrackerMoney.seasons = seasons
 pages = cueTrackerMoney.get_pages()
 money_results = cueTrackerMoney.get_results(pages)
+del cueTrackerMoney, pages
 
+# filter winners, who won less than 20k
+# TODO try to define filter as threshold in CueTracker.py
 money_results = {k: v for k, v in money_results.items() if v > 20000}
 
+# create name list from Money Prizes
 names_list = [k for k in money_results.keys()]
 names_list = sorted(names_list)
 
+# create DataFrame with one column - Name
 df = pd.DataFrame(data=names_list, columns=["Name"])
+
+# map Money to Names in DataFrame
 df['Money'] = df['Name'].map(money_results)
 
-print(df.head(15))
+print(df.head(10))
+
+# fetch data for Centuries
+cueTrackerCenturies = CueTracker(Category.CENTURIES)
+cueTrackerCenturies.seasons = seasons
+pages = cueTrackerCenturies.get_pages()
+cent_results = cueTrackerCenturies.get_results(pages)
+
+# map Centuries to Name
+df['Centuries'] = df['Name'].map(cent_results)
+
+print(df.head(10))
