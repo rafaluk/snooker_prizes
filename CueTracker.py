@@ -4,7 +4,12 @@ from enum import Enum
 
 
 class CueTracker:
+    """CueTracker class has been created to fetch and organise
+    data from https://cuetracker.net.
 
+    The whole use of this data
+    and project has no business connection and is in no way designed
+    for any kind of monetization."""
     def __init__(self, category):
         self._seasons = ['2018-2019']
         self._address_begin = "https://cuetracker.net/statistics/"
@@ -134,11 +139,12 @@ class CueTracker:
         elif self._category == Category.MATCHES_WON:
             results_dict = self.combine_results(pages, 3, 9)
         elif self._category == Category.MONEY:
-            results_dict = self.combine_results(pages, 5, 5)
+            results_dict = self.combine_results(pages, 30000, 5)
 
         return results_dict
 
     def combine_results(self, pages, threshold, value_cell):
+        """Merges results from pages from different seasons."""
         results_dict = {}
         for page in pages:
             tr_tags = list(page.find_all('tr'))

@@ -86,8 +86,7 @@ money_results = cueTrackerMoney.get_results(pages)
 del cueTrackerMoney, pages
 
 # filter winners, who won less than 20k
-# TODO try to define filter as threshold in CueTracker.py
-money_results = {k: v for k, v in money_results.items() if v > 20000}
+money_results = {k: v for k, v in money_results.items()}
 
 # create name list from Money Prizes
 names_list = [k for k in money_results.keys()]
@@ -97,7 +96,7 @@ names_list = sorted(names_list)
 df = pd.DataFrame(data=names_list, columns=["Name"])
 
 # map Money to Names in DataFrame
-df['Money'] = df['Name'].map(money_results)
+df['Money_Prizes'] = df['Name'].map(money_results)
 
 print(df.head(10))
 
@@ -106,8 +105,47 @@ cueTrackerCenturies = CueTracker(Category.CENTURIES)
 cueTrackerCenturies.seasons = seasons
 pages = cueTrackerCenturies.get_pages()
 cent_results = cueTrackerCenturies.get_results(pages)
+del cueTrackerCenturies, pages
 
 # map Centuries to Name
 df['Centuries'] = df['Name'].map(cent_results)
 
 print(df.head(10))
+
+# fetch data for Tournaments
+cueTrackerTournaments = CueTracker(Category.TOURNAMENTS_PLAYED)
+cueTrackerTournaments.seasons = seasons
+pages = cueTrackerTournaments.get_pages()
+tournaments_results = cueTrackerTournaments.get_results(pages)
+del cueTrackerTournaments, pages
+
+# map Tournaments to Name
+df['T_Played'] = df['Name'].map(tournaments_results)
+
+print(df.head(10))
+
+# fetch data for Matches Won
+cueTrackerMatchesWon = CueTracker(Category.MATCHES_WON)
+cueTrackerMatchesWon.seasons = seasons
+pages = cueTrackerMatchesWon.get_pages()
+matches_won_results = cueTrackerMatchesWon.get_results(pages)
+del cueTrackerMatchesWon, pages
+
+# map Matches Won to Name
+df['M_Won'] = df['Name'].map(matches_won_results)
+
+print(df.head(10))
+
+# fetch data for Match Played
+cueTrackerMatchesPlayed = CueTracker(Category.MATCHES_PLAYED)
+cueTrackerMatchesPlayed.seasons = seasons
+pages = cueTrackerMatchesPlayed.get_pages()
+matches_played_results = cueTrackerMatchesPlayed.get_results(pages)
+del cueTrackerMatchesPlayed, pages
+
+# map Metches to Name
+df['M_Played'] = df['Name'].map(matches_played_results)
+
+print(df.head(10))
+
+# df.to_csv("chuj.csv", index=False)
