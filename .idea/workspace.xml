@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b633196-ca3f-4aa1-90d0-53724a59e88e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,23 +21,25 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="py" value="1" />
+          <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Python" value="1" />
+          <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="449" />
-          <entry key="txt" value="13" />
+          <entry key="py" value="946" />
+          <entry key="txt" value="145" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="13" />
-          <entry key="Python" value="449" />
+          <entry key="PLAIN_TEXT" value="145" />
+          <entry key="Python" value="946" />
         </counts>
       </usages-collector>
     </session>
@@ -50,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="91" column="52" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
+            <state relative-caret-position="212">
+              <caret line="112" column="18" lean-forward="true" selection-start-line="112" selection-start-column="18" selection-end-line="112" selection-end-column="18" />
               <folding>
                 <element signature="e#47#90#0" />
                 <element signature="e#2154#2197#0" expanded="true" />
@@ -63,10 +62,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CueTracker.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2006">
-              <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+            <state relative-caret-position="652">
+              <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
+                <element signature="e#2171#2186#0" />
               </folding>
             </state>
           </provider>
@@ -187,7 +187,35 @@
       <option name="project" value="LOCAL" />
       <updated>1548968787587</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update gitignore">
+      <created>1548969063141</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1548969063141</updated>
+    </task>
+    <task id="LOCAL-00003" summary="create main DataFrame to hold scores data">
+      <created>1548969158960</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1548969158960</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add 'threshold' as a parameter">
+      <created>1548970774439</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1548970774439</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add centuries to df">
+      <created>1548970976510</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1548970976510</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -196,9 +224,9 @@
       <window_info anchor="top" content_ui="combo" id="Project" order="0" weight="0.24860853" />
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="0" visible="true" weight="0.3283859" />
+      <window_info anchor="bottom" id="Version Control" order="0" weight="0.2244898" />
       <window_info anchor="bottom" id="Python Console" order="1" weight="0.3283859" />
-      <window_info anchor="bottom" id="Terminal" order="2" weight="0.3283859" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.44155845" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" />
@@ -266,34 +294,42 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="add gitignore" />
+    <MESSAGE value="update gitignore" />
+    <MESSAGE value="create main DataFrame to hold scores data" />
+    <MESSAGE value="add 'threshold' as a parameter" />
+    <MESSAGE value="add centuries to df" />
+    <option name="LAST_COMMIT_MESSAGE" value="add centuries to df" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>92</line>
+          <line>99</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/CueTracker.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2006">
-          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+        <state relative-caret-position="652">
+          <caret line="163" lean-forward="true" selection-start-line="163" selection-end-line="163" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#2171#2186#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="91" column="52" selection-start-line="91" selection-start-column="52" selection-end-line="91" selection-end-column="52" />
+        <state relative-caret-position="212">
+          <caret line="112" column="18" lean-forward="true" selection-start-line="112" selection-start-column="18" selection-end-line="112" selection-end-column="18" />
           <folding>
             <element signature="e#47#90#0" />
             <element signature="e#2154#2197#0" expanded="true" />
