@@ -74,15 +74,22 @@
 #     return score_dict
 
 from CueTracker import CueTracker, Category
+import pandas as pd
 
-cueTracker = CueTracker(Category.MONEY)
-pages_ = cueTracker.get_pages()
-dupa = cueTracker.get_results(pages_)
+seasons = ['2016-2017']
 
+# get data for Money Prizes
+cueTrackerMoney = CueTracker(Category.MONEY)
+cueTrackerMoney.seasons = seasons
+pages = cueTrackerMoney.get_pages()
+money_results = cueTrackerMoney.get_results(pages)
 
-from operator import itemgetter
+money_results = {k: v for k, v in money_results.items() if v > 20000}
 
-bb = sorted(dupa.items(), key=itemgetter(1))
-for i in bb:
-    print(i)
+names_list = [k for k in money_results.keys()]
+names_list = sorted(names_list)
 
+df = pd.DataFrame(data=names_list, columns=["Name"])
+df['Money'] = df['Name'].map(money_results)
+
+print(df.head(15))
