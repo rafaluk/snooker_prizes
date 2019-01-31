@@ -40,10 +40,11 @@ All values are applicable for chosen seasons.
 All of data is being fetched from https://cuetracker.net website, when the program us running. Since the data could be heavy (especially whole HTML code) the largest variables are deleted right after their usage.
 
 ## Libraries
- * requests - to call GET method on specifil URL 
- * BeautifulSoup - to parse and organise HTML code 
- * Pandas/NumPy - to prepare data for use in DataFrame format
- * SciKit-Learn - to perform Data Science computations
+ * ```BeautifulSoup``` - to parse and organise HTML code 
+ * ```Pandas```/```NumPy``` - to prepare data for use in DataFrame format
+ * ```sklearn``` - to perform Data Science computations
+ * ```request``` - to call GET method on specifil URL. 
+Why didn't I use ```Selenium``` with ```'headless'``` ChromeDriver, but some unsexy ```requests```? Since Selenium renders the website, downloads all depending JavaScirpts and so on, Selenium is much slower solution. In cases where browser automatation is required, Selenium is the best solution, but in this case it worsens the performance ca. 5-6x times.
  
  ## TODO
  
