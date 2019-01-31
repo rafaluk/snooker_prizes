@@ -126,23 +126,23 @@ class CueTracker:
 
         Return a list of tuples."""
         if self._category == Category.CENTURIES:
-            results_dict = self.combine_results(pages, 5)
+            results_dict = self.combine_results(pages, 1, 5)
         elif self._category == Category.TOURNAMENTS_PLAYED:
-            results_dict = self.combine_results(pages, 5)
+            results_dict = self.combine_results(pages, 3, 5)
         elif self._category == Category.MATCHES_PLAYED:
-            results_dict = self.combine_results(pages, 7)
+            results_dict = self.combine_results(pages, 3, 7)
         elif self._category == Category.MATCHES_WON:
-            results_dict = self.combine_results(pages, 9)
+            results_dict = self.combine_results(pages, 3, 9)
         elif self._category == Category.MONEY:
-            results_dict = self.combine_results(pages, 5)
+            results_dict = self.combine_results(pages, 5, 5)
 
         return results_dict
 
-    def combine_results(self, pages, value_cell):
+    def combine_results(self, pages, threshold, value_cell):
         results_dict = {}
         for page in pages:
             tr_tags = list(page.find_all('tr'))
-            tournaments = self.extract_data(tr_tags, 5, value_cell)
+            tournaments = self.extract_data(tr_tags, threshold, value_cell)
             results_dict = self.merge_dicts(results_dict, tournaments)
         return results_dict
 
