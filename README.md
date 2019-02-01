@@ -1,5 +1,5 @@
 # Snooker Prizes
-This project connects two areas that I'm big fun of: **Data Science and Snooker**. B-)
+This project connects two areas that I'm big fan of: **Data Science and Snooker**. B-)
 
 It's goal is to **predict snooker player's money prizes in whole season basing on his achievements**.
 
@@ -11,7 +11,7 @@ You can read more about this project on my blog: http://klatonomics.com.
 
 ## Web scraping
 
-The Python code sends requests to website to download the whole HTML code. HTML code then is being searched for particular information. This search is based on particular tags and their classes. It's quite vulnerable for any format changes on the website (for instance new tables or renamed CSS classes).
+This code uses Python's ```requests``` to fetch data and ```BeautifulSoup``` to scrap it - downloaded HTML code is being searched for particular information. This search is based on particular tags and their classes. It's quite vulnerable for any format changes on the website (for instance new tables or renamed CSS classes).
 
 For example money prizes are downloaded from this website: https://cuetracker.net/statistics/prize-money/won/season/2018-2019.
 
@@ -26,7 +26,7 @@ class Links(Enum):
 ```
 
 ## Variables
- * "Name" - player's first name and last name,
+ * "Name" - player's first name and last name, could be used as an index
  * "Centuries" - how many times player achieved a break with at least 100 points,
  * "T_Played" - how many tournaments player has taken part in,
  * "M_Played" - how many matches player has played,
@@ -40,13 +40,13 @@ All values are applicable for chosen seasons.
 All of data is being fetched from https://cuetracker.net website, when the program us running. Since the data could be heavy (especially whole HTML code) the largest variables are deleted right after their usage.
 
 ## Libraries
- * ```BeautifulSoup``` - to parse and organise HTML code 
+ * ```BeautifulSoup``` - to parse and scrap HTML code 
  * ```Pandas```/```NumPy``` - to prepare data for use in DataFrame format
  * ```sklearn``` - to perform Data Science computations
- * ```request``` - to call GET method on specifil URL. 
+ * ```requests``` - to call GET method on specifil URL. 
 Why didn't I use ```Selenium``` with ```'headless'``` ChromeDriver, but some unsexy ```requests```? Since Selenium renders the website, downloads all depending JavaScirpts and so on, Selenium is much slower solution. In cases where browser automatation is required, Selenium is the best solution, but in this case it worsens the performance ca. 5-6x times.
  
  ## TODO
  
- Next big step is to deploy the code on some web app. It would be done probably with Flask.
+ Next big step is to deploy the code as some web app. It would be done probably with Flask.
  
