@@ -8,6 +8,8 @@ class DataPrepare:
         self._seasons = seasons
 
     def fetch_one_column(self, category):
+        """Connect to one specific page, downloads its HTML content
+        and filters it properly."""
         cue_tracker = CueTracker(category)
         cue_tracker.seasons = self._seasons
         _pages = cue_tracker.get_pages()
@@ -22,6 +24,7 @@ class DataPrepare:
         matches_won = self.fetch_one_column(Category.MATCHES_WON)
         matches_played = self.fetch_one_column(Category.MATCHES_PLAYED)
         titles = self.fetch_one_column(Category.TITLES)
+        average_shot_time = self.fetch_one_column(Category.AVERAGE_SHOT_TIME)
 
         # create name list from Money Prizes
         names_list = [k for k in money.keys()]
@@ -34,6 +37,7 @@ class DataPrepare:
         df['M_Won'] = df['Name'].map(matches_won)
         df['M_Played'] = df['Name'].map(matches_played)
         df['Titles'] = df['Name'].map(titles)
+        df['AST'] = df['Name'].map(average_shot_time)
         df['Money_Prizes'] = df['Name'].map(money)
 
         return df

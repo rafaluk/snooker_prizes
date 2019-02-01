@@ -63,7 +63,7 @@ class CueTracker:
         results = {}
         for cell in tag_list:
             inside_cell = list(cell.children)
-            value = int(inside_cell[value_cell].get_text().replace(",", ""))
+            value = float(inside_cell[value_cell].get_text().replace(",", ""))
             if value < threshold:
                 break
             name = inside_cell[3].find("a").get_text()
@@ -72,25 +72,6 @@ class CueTracker:
             else:
                 results[name] = value
         return results
-
-    # @staticmethod
-    # def extract_tournaments_played(tag_list, threshold):
-    #     """Obtains results from <tr> object and adds it to a dictionary.
-    #
-    #     Returns a dictionary: results={name:score}."""
-    #     results = {}
-    #     for cell in tag_list:
-    #         inside_cell = list(cell.children)
-    #         # print(inside_cell)
-    #         value = int(inside_cell[5].get_text())
-    #         if value < threshold:
-    #             break
-    #         name = inside_cell[3].find("a").get_text()
-    #         if name in results:
-    #             results[name] += value
-    #         else:
-    #             results[name] = value
-    #     return results
 
     @staticmethod
     def category_to_link(category):
@@ -112,6 +93,8 @@ class CueTracker:
             return Links.TOURNAMENTS_AND_MATCHES
         if category == Category.MONEY:
             return Links.MONEY
+        if category == Category.AVERAGE_SHOT_TIME:
+            return Links.AVERAGE_SHOT_TIME
 
     @staticmethod
     def merge_dicts(dict1, dict2):
@@ -142,6 +125,8 @@ class CueTracker:
             results_dict = self.combine_results(pages, 30000, 5)
         elif self._category == Category.TITLES:
             results_dict = self.combine_results(pages, 1, 5)
+        elif self._category == Category.AVERAGE_SHOT_TIME:
+            results_dict = self.combine_results(pages, 1, 7)
 
         return results_dict
 
@@ -162,6 +147,7 @@ class Category(Enum):
     MATCHES_PLAYED = 4
     MATCHES_WON = 5
     MONEY = 6
+    AVERAGE_SHOT_TIME = 7
 
 
 class Links(Enum):
@@ -169,3 +155,4 @@ class Links(Enum):
     TITLES = "tournaments/won/"
     TOURNAMENTS_AND_MATCHES = "matches-and-frames/won/"
     MONEY = "prize-money/won/"
+    AVERAGE_SHOT_TIME = "other/average-shot-time/"
