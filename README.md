@@ -46,7 +46,7 @@ All of data is being fetched from https://cuetracker.net website, when the progr
  * ```requests``` - to call GET method on specifil URL. 
 Why didn't I use ```Selenium``` with ```'headless'``` ChromeDriver, but some unsexy ```requests```? Since Selenium renders the website, downloads all depending JavaScirpts and so on, Selenium is much slower solution. In cases where browser automatation is required, Selenium is the best solution, but in this case it worsens the performance ca. 5-6x times.
  
- ## TODO
+ ## Format
  
- Next big step is to deploy the code as some web app. It would be done probably with Flask.
+ This predictor has a form of a web app. It's web app stuff has been created with **Flask**. It's hosted on **Heroku**.
  
