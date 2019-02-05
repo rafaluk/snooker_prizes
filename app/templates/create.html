@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Data creation</h1>
+    There is no data analysis without data. :)
+    <br>
+    Let's create it!
+    <br>
+    Here info about this data:
+    <ol>
+        <li>source</li>
+        <li>size</li>
+        <li>context</li>
+        <li>prediction aim</li>
+        <li>features</li>
+    </ol>
+    <br>
+    It'd be also nice, if the user could define <i>seasons</i>.
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ wtf.quick_form(form) }}
+            </div>
+        </div>
+    </div>
+    <br>
+    <img src="{{ url }}" width="200" height="200">
+{% endblock %}
