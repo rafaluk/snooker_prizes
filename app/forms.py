@@ -19,10 +19,6 @@ class WelcomeScreenForm(FlaskForm):
 class CreateDataForm(FlaskForm):
     submit = SubmitField('Create data')
 
-    @staticmethod
-    def generate_plot():
-        x = np.arange(1, 100, 10)
-        y = np.random.rand(10)
-        plt.plot(x, y)
-        plt.savefig('static/images/wykres.png')
-        return
+
+
+

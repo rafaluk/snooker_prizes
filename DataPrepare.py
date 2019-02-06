@@ -7,6 +7,10 @@ class DataPrepare:
     def __init__(self, seasons):
         self._seasons = seasons
 
+    @property
+    def seasons(self):
+        return self._seasons
+
     def fetch_one_column(self, category):
         """Connect to one specific page, downloads its HTML content
         and filters it properly."""
@@ -43,4 +47,6 @@ class DataPrepare:
         return df
 
     def get_csv_file(self, sep=";"):
-        self.fetch_all().to_csv("snooker_data.csv", sep=sep, index=False)
+        df = self.fetch_all()
+        df.to_csv("app/static/dataframes/snooker_data.csv", sep=sep, index=False)
+        return df

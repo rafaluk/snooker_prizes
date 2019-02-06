@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Data successfully downloaded!</h1>
+    <br>
+        The .csv file has been generated.
+    <hr>
+
+    <h3>Data details</h3>
+    <ol>
+        <li>Size:
+            <ul>
+                <li>
+                    Rows: {{ row_count }}
+                </li>
+                <li>
+                    Columns: {{ col_count }}
+                </li>
+            </ul>
+        </li>
+        <li>Features:
+            <ul>
+                {% for column in columns[:-1] %}
+                    <li>
+                        <b>{{ column }}</b> (empty rows: {{ df[column].isna().sum() }})
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+
+        <li>Target:
+            <ul>
+                <li>
+                    <b>{{ columns[-1] }}</b> (empty rows: {{ df[columns[-1]].isna().sum() }})
+                </li>
+            </ul>
+        </li>
+
+        <li>Data from seasons:
+            <ul>
+                {% for season in seasons %}
+                    <li>
+                        {{ season }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+
+        <li>Source:
+            <ul>
+                <li>
+                    <a href="https://cuetracker.net/">Cuetracker.net</a>
+                </li>
+            </ul>
+        </li>
+    </ol>
+{% endblock %}

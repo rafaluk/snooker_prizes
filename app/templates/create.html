@@ -25,5 +25,7 @@
         </div>
     </div>
     <br>
-    <img src="{{ url }}" width="200" height="200">
+    {% if is_file %}
+        <img src="{{ url }}" width="200" height="200">
+    {% endif %}
 {% endblock %}
