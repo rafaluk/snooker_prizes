@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Choose your model</h1>
+    It's time to choose a type of your predictive model.<br><br>
+    <br>
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ wtf.quick_form(form) }}
+            </div>
+        </div>
+    </div>
+    <br>
+{% endblock %}

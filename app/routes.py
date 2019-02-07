@@ -1,12 +1,14 @@
 from flask import render_template, redirect, url_for, flash, request, session, json
 from app import app
-from app.forms import LoginForm, WelcomeScreenForm, CreateDataForm, DetailsForm, ExampleForm
+from app.forms import LoginForm, WelcomeScreenForm, CreateDataForm, DetailsForm, HistogramForm, \
+    HistogramForm2, ModelForm, TrainForm, RandomForestForm
 from .static.utils import Utils
 import pandas as pd
 from plot_gen import PlotGenerator
 
 
 df = pd.DataFrame()
+model_name = ""
 
 @app.route('/')
 def nothing():
@@ -61,7 +63,8 @@ def details():
 
 @app.route('/analyse', methods=['GET', 'POST'])
 def analyse():
-    form = ExampleForm()
+    form = HistogramForm()
+    form2 = HistogramForm2()
     global df
 
     path = "app/static/images/histogram.png"
@@ -90,8 +93,44 @@ def analyse():
                                    url='static/images/histogram.png', is_file=is_file)
         except:
             flash('Something went completely wrong! :( Start again.')
+# TODO second button - the same form (not form2 like it's now)
+    if form2.validate_on_submit():
+        return redirect(url_for('model'))
 
-    return render_template('analyse.html', title="Analysis", form=form, is_file=is_file)
+    return render_template('analyse.html', title="Analysis", form=form, form2=form2, is_file=is_file)
+
+
+@app.route('/model', methods=['GET', 'POST'])
+def model():
+    form = ModelForm()
+    global model_name
+
+    if form.validate_on_submit():
+        model_name = form.models.data
+        # CHANGE URL_FOR TO SPECIFIC SUBPAGES
+        if model_name == "randomForest":
+            return redirect(url_for('randomForest'))
+        elif model_name == "knn":
+            return redirect(url_for('train'))
+        elif model_name == "linearRegression":
+            return redirect(url_for('train'))
+
+    return render_template('model.html', title="Choose model", form=form)
+
+
+@app.route('/models/randomForest')
+def randomForest():
+    form = RandomForestForm()
+
+    return render_template('models/randomForest.html', title="Random Forest", form=form)
+
+
+@app.route('/train')
+def train():
+    global model_name
+    form = TrainForm()
+
+    return render_template('train.html', title="Train", model_name=model_name)
 
 
 @app.route('/login')

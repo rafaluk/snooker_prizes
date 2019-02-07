@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <style>
+        tab1 { padding-left: 4em; }
+    </style>
+    <h1>Tune your model</h1>
+    In order to build a good predictive model, you have to tune your model.
+    <br>
+    <br>
+    You've chosen <b>RANDOM FOREST</b> model.
+    <br>
+    <h3>Tune parameters</h3>
+<ol>
+    <li>
+        <b>n_estimators</b>: number of trees in the forest
+        <br>
+         <tab1>{{ form.n_estimators.label }}
+             {{ form.n_estimators(size=10) }}</tab1>
+        <br>
+    </li>
+    <br>
+    <li>
+        <b>max_features</b>: max number of features considered for splitting a node
+        <br>
+        <tab1>
+         {{ form.max_features.label }}
+         {{ form.max_features(size=10) }}</tab1>
+        <br>
+    </li>
+    <br>
+    <li>
+        <b>max_depth</b>: max number of levels in each decision tree
+        <br>
+        <tab1>
+         {{ form.max_depth.label }}
+         {{ form.max_depth(size=10) }}</tab1>
+        <br>
+    </li>
+    <br>
+    <li>
+        <b>min_samples_split</b>: min number of data points placed in a node before the node is split
+        <br>
+        <tab1>
+         {{ form.min_samples_split.label }}
+         {{ form.min_samples_split(size=10) }}</tab1>
+        <br>
+    </li>
+    <br>
+    <li>
+        <b>min_samples_leaf</b>: min number of data points allowed in a leaf node
+        <br>
+        <tab1>
+         {{ form.min_samples_leaf.label }}
+         {{ form.min_samples_leaf(size=10) }}</tab1>
+        <br>
+    </li>
+    <br>
+    <li>
+        <b>bootstrap</b>: method for sampling data points (with or without replacement)
+        <br>
+        <tab1>
+         {{ form.bootstrap.label }}
+         {{ form.bootstrap() }}</tab1>
+        <br>
+    </li>
+</ol>
+<br>
+{{ form.submit() }}
+    <br>
+{% endblock %}
