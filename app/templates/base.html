@@ -1,7 +1,7 @@
-{% extends 'bootstrap/base.html' %}
+{% extends "bootstrap/base.html" %}
 
 {% block title %}
-    {% if title %}{{ title }} - Microblog{% else %}Welcome to Microblog{% endif %}
+    {% if title %}{{ title }} - Snooker{% else %}Welcome to Microblog{% endif %}
 {% endblock %}
 
 {% block navbar %}
@@ -32,7 +32,10 @@
             {% endwith %}
 
             {# application content needs to be provided in the app_content block #}
-            {% block app_content %}{% endblock %}
+            {% block app_content %}
+            {% endblock %}
+            <hr>
+            <center>Copyrights (c) by Rafał Klat.</center><br>
+         {% endblock %}
         </div>
-    {% endblock %}
 </div>

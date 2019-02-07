@@ -1,5 +1,6 @@
 from CueTracker import CueTracker, Category
 import pandas as pd
+import numpy as np
 
 
 class DataPrepare:
@@ -43,6 +44,8 @@ class DataPrepare:
         df['Titles'] = df['Name'].map(titles)
         df['AST'] = df['Name'].map(average_shot_time)
         df['Money_Prizes'] = df['Name'].map(money)
+
+        df['Titles'] = df['Titles'].replace(np.nan, 0)
 
         return df
 
