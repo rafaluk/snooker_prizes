@@ -68,31 +68,28 @@ def analyse():
     global df
 
     path = "app/static/images/histogram.png"
-    is_deleted = Utils().delete_file(path)
-
-    if is_deleted:
-        print("Image deleted: " + path)
-        is_file = False
-    else:
-        print("There's no such file: " + path)
-        is_file = False
+    Utils().delete_file(path)
+    print("Image deleted: " + path)
+    is_file = False
 
     if form.validate_on_submit():
         try:
             column = form.variable.data
             bins = int(form.bins.data)
             normal_dist = form.normal_dist.data
+
             if form.bins.validate(form) is not True:
                 flash('Wrong bin value. Enter value between 10 and 50.')
                 return redirect(url_for('analyse'))
-
-            gen = PlotGenerator(df[column], title=column)
+            gen = PlotGenerator(df[column], title=str(column))
             gen.plot_and_save_hist(bins, normal_dist=normal_dist)
             is_file = True
-            return render_template('analyse.html', title="Analysis", form=form,
+            return render_template('analyse.html', title="Analysis", form=form, form2=form2,
                                    url='static/images/histogram.png', is_file=is_file)
         except:
             flash('Something went completely wrong! :( Start again.')
+            return redirect(url_for('analyse'))
+
 # TODO second button - the same form (not form2 like it's now)
     if form2.validate_on_submit():
         return redirect(url_for('model'))
@@ -118,9 +115,17 @@ def model():
     return render_template('model.html', title="Choose model", form=form)
 
 
-@app.route('/models/randomForest')
+@app.route('/models/randomForest', methods=['GET', 'POST'])
 def randomForest():
     form = RandomForestForm()
+
+    if form.validate_on_submit():
+        # TODO redirect and performing random forest
+        if form.my_parameters.data:
+            print("todo")
+            # performing random forest calculations, new class probably
+        elif form.random_parameters.data:
+            print("todo")
 
     return render_template('models/randomForest.html', title="Random Forest", form=form)
 

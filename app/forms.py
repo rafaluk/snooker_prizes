@@ -45,22 +45,44 @@ class ModelForm(FlaskForm):
     models = SelectField('Choose variable', choices=choices)
     submit = SubmitField('Next')
 
-# n_estimators = number of trees in the foreset
-# max_features = max number of features considered for splitting a node
-# max_depth = max number of levels in each decision tree
-# min_samples_split = min number of data points placed in a node before the node is split
-# min_samples_leaf = min number of data points allowed in a leaf node
-# bootstrap = method for sampling data points (with or without replacement)
 
 class RandomForestForm(FlaskForm):
-    n_estimators = IntegerField(default=30, validators=[NumberRange(10, 50)])
-    max_features = IntegerField()
-    max_depth = IntegerField()
-    min_samples_split = IntegerField()
-    min_samples_leaf = IntegerField()
-    bootstrap = BooleanField("Include bootstrap?") # check if default=True works
 
-    submit = SubmitField('Next')
+    features_list = [('auto', 'auto'), ('sqrt', 'sqrt')]
+    split_list = [("2", "2"), ("5", "5"), ("10", "10")]
+    leaf_list = [("1", "1"), ("2", "2"), ("4", "4")]
+    train_split_list = [("95", "15%"), ("75", "25%"), ("65", "35%")]
+
+    random_parameters = SubmitField("I want to choose the parameters randomly by an algorithm")
+
+    train_split = SelectField(
+        label="Train split: what part of data will be used for training",
+        choices=train_split_list)
+
+    n_estimators = IntegerField(
+        label="Estimators: number of trees in the forest",
+        default=30, validators=[NumberRange(10, 50)])
+
+    max_features = SelectField(
+        label="Max features:  max number of features considered for splitting a node",
+        choices=features_list)
+
+    max_depth = IntegerField(
+        label="Max depth max number of levels in each decision tree",
+        validators=[NumberRange(10, 50)], default=20)
+
+    min_samples_split = SelectField(
+        label="Min samples split: min number of data points placed in a node before the node is split",
+        choices=split_list, validators=None)
+
+    min_samples_leaf = SelectField(
+        label="Min samples leaf: min number of data points allowed in a leaf node",
+        choices=leaf_list, validators=None)
+
+    bootstrap = BooleanField(
+        label="Bootstrap: method for sampling data points (with or without replacement)") # check if default=True works
+
+    my_parameters = SubmitField('Proceed with my parameters')
 
 
 class TrainForm(FlaskForm):
