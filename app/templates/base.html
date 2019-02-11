@@ -1,41 +1,49 @@
 {% extends "bootstrap/base.html" %}
 
 {% block title %}
-    {% if title %}{{ title }} - Snooker{% else %}Welcome to Microblog{% endif %}
+{% if title %}{{ title }} - Snooker{% else %}Snooker Prizes{% endif %}
 {% endblock %}
 
 {% block navbar %}
-    <nav class="navbar navbar-default">
-        <h2>Snooker Prizes Predictor</h2>
-    </nav>
+{{nav.mynavbar.render()}}
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">-->
+    <!--<div class="container">-->
+        <!--<a class="navbar-brand" href="#">-->
+            <!--&lt;!&ndash;<img src="static/images/logo.png" alt="" width="50", height="50">&ndash;&gt;-->
+        <!--</a>-->
+        <!--<h2>Snooker Prizes - Random Forest Predictor</h2>-->
+    <!--</div>-->
+<!--</nav>-->
 {% endblock %}
 
-<div class="p-3 mb-2 bg-success text-white">
-    {% with messages = get_flashed_messages() %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+{% block content %}
+<div class="container">
+    <div class="p-3 mb-2 bg-success text-white">
+        {% with messages = get_flashed_messages() %}
         {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">{{ message }}</div>
+        {% endfor %}
         {% endif %}
-    {% endwith %}
+        {% endwith %}
 
-    {% block content %}
-        <div class="container">
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-info" role="alert">{{ message }}</div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-
-            {# application content needs to be provided in the app_content block #}
-            {% block app_content %}
-            {% endblock %}
-            <hr>
-            <center>Copyrights &copy; by Rafał Klat</center><br>
-         {% endblock %}
-        </div>
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}
+        {% endblock %}
+        <hr>
+        <center>Copyrights &copy; by Rafał Klat</center>
+        <br>
+    </div>
 </div>
+{% endblock %}

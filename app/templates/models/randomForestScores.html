@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+<style>
+    img {max-width: 90%;}
+</style>
+    <h1>Model performance</h1>
+    Here you can see performance of your model.
+    <br>
+    <h3>Main characteristics</h3>
+    <ul>
+        {% for key, value in rf_results.items() %}
+            <li>
+                {{ key }}: {{ value }}
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+
+    {% if is_file %}
+        <center><img src="{{ url }}"></center>
+    {% endif %}
+
+    <!--<h3>Feature importance</h3>-->
+    <!--<ul>-->
+        <!--{% for value in imp %}-->
+            <!--<li>-->
+                <!--{{ value }}-->
+            <!--</li>-->
+        <!--{% endfor %}-->
+    <!--</ul>-->
+{% endblock %}

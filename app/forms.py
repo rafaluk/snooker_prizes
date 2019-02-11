@@ -4,18 +4,19 @@ from wtforms.validators import DataRequired, NumberRange
 import pandas as pd
 
 
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign In')
-
-
 class WelcomeScreenForm(FlaskForm):
     submit = SubmitField('Start')
 
 
 class CreateDataForm(FlaskForm):
+
+    choices_since = [("2014", "2014"), ("2015", "2015"),
+                     ("2016", "2016"), ("2017", "2017")]
+    choices_to = [("2018", "2018")]
+
+    seasons_since = SelectField(label="Since", choices=choices_since)
+    seasons_to = SelectField(label="To", choices=choices_to)
+
     submit = SubmitField('Create data')
 
 
@@ -47,13 +48,10 @@ class ModelForm(FlaskForm):
 
 
 class RandomForestForm(FlaskForm):
-
     features_list = [('auto', 'auto'), ('sqrt', 'sqrt')]
     split_list = [("2", "2"), ("5", "5"), ("10", "10")]
     leaf_list = [("1", "1"), ("2", "2"), ("4", "4")]
-    train_split_list = [("95", "15%"), ("75", "25%"), ("65", "35%")]
-
-    random_parameters = SubmitField("I want to choose the parameters randomly by an algorithm")
+    train_split_list = [("15", "15%"), ("25", "25%"), ("35", "35%")]
 
     train_split = SelectField(
         label="Train split: what part of data will be used for training",
@@ -85,6 +83,5 @@ class RandomForestForm(FlaskForm):
     my_parameters = SubmitField('Proceed with my parameters')
 
 
-class TrainForm(FlaskForm):
-
-    submit = SubmitField('Next')
+class RandomForestForm2(FlaskForm):
+    random_parameters = SubmitField("I want to choose the parameters randomly by an algorithm")

@@ -28,7 +28,7 @@ class PlotGenerator:
 
         ax.set_xlabel('Values')
         ax.set_ylabel('Counts')
-        # plt.xlim(0)
+        plt.grid(linestyle='-', linewidth=.3)
         plt.title("Histogram of " + title + " ($\mu=" + str(x_mean) + "$, $\sigma=" + str(x_std) + "$)")
         plt.savefig('app/static/images/histogram.png')
         print("histogram genereted")

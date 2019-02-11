@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <style>
+        tab1 { padding-left: 4em; }
+    </style>
+    <h1>Tune your model</h1>
+    In order to build a good predictive model, you have to tune your model.
+    <br><br>
+    Now you can:
+    <ul>
+        <li>
+            Trust the algorithms and let them tune the parameters (RandomizedSearchCV)
+        </li>
+        <li>
+            Tune your own parameters
+        </li>
+    </ul>
+    <h3>Trust the algorithms...</h3>
+<!-- TODO zrobić tutaj zrobic form2, zeby byl przycisk osobny-->
+
+<div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ wtf.quick_form(form2) }}
+            </div>
+        </div>
+    </div>
+    <h3>...or tune your own parameters</h3>
+    <div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ wtf.quick_form(form) }}
+            </div>
+        </div>
+    </div>
+    <br>
+{% endblock %}

@@ -1,5 +1,6 @@
 import os
 from DataPrepare import DataPrepare
+import numpy as np
 
 
 class Utils:
@@ -17,3 +18,11 @@ class Utils:
         data_prepare = DataPrepare(seasons)
         data_prepare.get_csv_file()
         return True
+
+    @staticmethod
+    def convert_seasons(since, to):
+        result = []
+        for i in range(int(since), int(to)):
+            s = str(i) + "-" + str(i+1)
+            result.append(s)
+        return result

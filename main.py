@@ -2,6 +2,7 @@ from DataPrepare import DataPrepare
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.metrics import explained_variance_score, mean_absolute_error
 
 seasons = ['2017-2018']
 
@@ -71,7 +72,7 @@ X = df.drop('Money_Prizes', axis=1)
 y = df['Money_Prizes']
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.25, random_state=42)
+    X, y, test_size=0.25)
 
 randomForest = RandomForestRegressor()
 from pprint import pprint
@@ -92,7 +93,7 @@ plt.ylabel("score")
 plt.ylim(0, 1)
 plt.yticks(np.arange(0,1,0.1))
 plt.plot(estimators, scores)
-plt.show()
+# plt.show()
 
 features = X.columns
 # print(features)
@@ -107,13 +108,24 @@ y_pred = np.round_(y_pred, 0)
 
 df2 = pd.DataFrame({'real': y_test, 'predicted': y_pred},
                    columns=['real', 'predicted'])
+
+df2['error'] = np.abs(df2['real'] - df2['predicted'])
+
 print(df2)
+print('error sum:')
+print(df2['error'].sum())
+print('error avf:')
+print(np.average(df2['error']))
+fig, ax = plt.subplots()
 
 plt.scatter(x=df2.index, y=df2['predicted'])
 
 plt.scatter(x=df2.index, y=df2['real'])
 plt.grid(linestyle='-', linewidth=.3)
 plt.xticks(np.arange(len(df2['predicted'])), rotation=90)
-# plt.show()
+ax.set_yticklabels(['{:,}'.format(int(x)) for x in ax.get_yticks().tolist()])
+plt.show()
 print(randomForest.score(X_test, y_test))
+
+print(mean_absolute_error(y_test, y_pred))
 
