@@ -24,7 +24,7 @@ Mako==1.0.7
 MarkupSafe==1.1.0
 matplotlib==3.0.2
 mkl-fft==1.0.6
-mkl-random==1.0.2
+mkl-random==1.0.1
 numpy==1.15.4
 pandas==0.24.0
 patsy==0.5.1
