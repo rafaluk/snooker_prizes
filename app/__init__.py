@@ -7,7 +7,7 @@ import dominate
 from dominate.tags import img
 
 app = Flask(__name__)
-app.config.from_object(Config)
+# app.config.from_object(Config)
 bootstrap = Bootstrap(app)
 
 nav = Nav()
