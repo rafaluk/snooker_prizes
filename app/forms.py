@@ -25,7 +25,7 @@ class DetailsForm(FlaskForm):
 
 
 class HistogramForm(FlaskForm):
-    df = pd.read_csv("app/static/dataframes/snooker_data.csv", sep=";", index_col=0)
+    df = pd.read_csv("static/dataframes/snooker_data.csv", sep=";", index_col=0)
     columns = df.columns
     del df
     col_list = [(x, x) for x in columns][:-1]
