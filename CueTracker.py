@@ -44,11 +44,15 @@ class CueTracker:
         counter = 0
         seasons = self.seasons
         infix = self.category_to_link(self.category).value
+        print("trying to download")
         for season in seasons:
             address = self._address_begin + infix \
                       + self._address_end + season
+            print("address created")
             page = requests.get(address)
+            print("requests.get called")
             soup = BeautifulSoup(page.content, 'html.parser')
+            print("BeautifulSoup called")
             pages.append(soup)
             counter += 1
             print("<get_pages> " + str(counter) + " of " +

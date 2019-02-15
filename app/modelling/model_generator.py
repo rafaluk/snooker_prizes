@@ -29,6 +29,11 @@ class ModelGenerator:
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=split)
 
+        self._X_train = X_train
+        self._X_test = X_test
+        self._y_train = y_train
+        self._y_test = y_test
+
         rfr = RandomForestRegressor(n_estimators=n_estimators, max_features=max_features, max_depth=max_depth,
                                     min_samples_split=min_samples_split, min_samples_leaf=min_samples_leaf,
                                     bootstrap=bootstrap)
@@ -86,7 +91,7 @@ class ModelGenerator:
 
         # TODO change to: cv=3
         rfr_random = RandomizedSearchCV(estimator=rfr, param_distributions=random_grid,
-                                        cv=2, verbose=2, n_jobs=-1)
+                                        cv=2, verbose=2)
         rfr_random.fit(X_train, y_train)
         self._model = rfr_random
         predictions = rfr_random.predict(X_test)
@@ -120,7 +125,9 @@ class ModelGenerator:
         model = self._model
         y_test = self._y_test
         X_test = self._X_test
+        print("model shape: " + str(X_test.shape))
         predictions = model.predict(X_test)
+
 
         fig, ax = plt.subplots()
         range_len = np.arange(0, stop=len(y_test))
