@@ -12,6 +12,7 @@ The code uses Python's ```requests``` to fetch data and ```BeautifulSoup``` to s
 
 Pros:
 > It's very fast
+
 Cons:
 > It's very vulnerable for any format changes on the website (for instance changes in page layout or renamed tag classes).
 
@@ -64,8 +65,3 @@ The frontend and routing logic have been developed with ```Flask```, which is a 
  * ```Pandas```/```NumPy``` - to prepare data for use in DataFrame format.
  * ```sklearn``` - to perform predictory computations.
  * ```requests``` - to call HTTP methods on specifil URL. ```Selenium``` solution is also possible, but since it would require much more development, ```requests``` lib has been used.
- 
-## Format
- 
-This predictor has a form of a web app. It's web app stuff has been created with **Flask**. It's hosted on **Heroku**.
- 
