@@ -36,7 +36,7 @@ To predict money prizes a Random Forest model has been used.
 
 ![](random_forest.jpg)
 
-Random forest model is a combination of multiple decision trees. The algorithm randomly chooses features, randomly chooses sample from training set and builds a decision tree. Then it repeats the process multiple times. When all trees (i.e. a forest) is created, the algorithm calculates mean from values on its leaves. It results in a single tree model.
+Random forest model is a combination of multiple decision trees. The algorithm randomly chooses features, randomly chooses sample from training set and builds a decision tree. Then it repeats the process multiple times. When all trees (i.e. a forest) are created, the model is ready. Predictions are being made by passing a piece of data through the whole forest and calculate mean from produced values.
 
 There are few parameters that should be tuned within Random Forest model:
 * ```max_features``` - the maximum number of features that will be used in every single decision tree. It affects performance: the bigger a value is, the algorithm works slower, but the results will be more accurate.
