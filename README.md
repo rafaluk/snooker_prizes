@@ -1,11 +1,11 @@
-# Snooker Prizes
-This project connects two areas that I'm a big fan of: **Data Science and Snooker**. B-)
-
-It's goal is to **predict snooker players' money prizes in whole season basing on his achievements**.
-
 The prizes in snooker can be sometimes ridiculously huge so why don't we use data science to predict some?
 
-This project has a form of a web application, which downloads data from online resources and perform predictions. 
+![](snooker_money.jpg)
+
+# Snooker Prizes
+This project's goal is to **predict snooker players' money prizes in whole season basing on his achievements**.
+
+It's a web application, which downloads data from online resources and perform predictions. 
 
 ## Web scraping
 The code uses Python's ```requests``` to fetch data and ```BeautifulSoup``` to scrap it - downloaded HTML code is being searched for particular blocks (e.g. find all ```div``` tags of class ```abc123```). 
@@ -65,3 +65,6 @@ The frontend and routing logic have been developed with ```Flask```, which is a 
  * ```Pandas```/```NumPy``` - to prepare data for use in DataFrame format.
  * ```sklearn``` - to perform predictory computations.
  * ```requests``` - to call HTTP methods on specifil URL. ```Selenium``` solution is also possible, but since it would require much more development, ```requests``` lib has been used.
+
+## Hosting
+The project is ready to be hosted using Heroku.
